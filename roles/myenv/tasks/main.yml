@@ -17,3 +17,18 @@
     name: "*"
     state: latest
   when: ansible_distribution != "Fedora"
+
+- name: install pyenv
+  git:
+    repo: 'https://github.com/pyenv/pyenv.git'
+    dest: "/home/{{ my_user }}/.pyenv"
+  become: true
+  become_user: "{{ my_user }}"
+
+- name: define pyenv setting
+  blockinfile:
+    dest: "/home/{{ my_user }}/.bash_profile"
+    block: |
+      export PYENV_ROOT="$HOME/.pyenv"
+      export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init -)"
