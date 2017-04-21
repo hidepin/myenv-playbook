@@ -11,6 +11,7 @@ packages:
   - subversion
   - git
   - zsh
+  - golang
   - zlib-devel
   - bzip2
   - bzip2-devel
