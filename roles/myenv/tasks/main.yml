@@ -25,10 +25,34 @@
   become: true
   become_user: "{{ my_user }}"
 
-- name: define pyenv setting
+- name: install rbenv
+  git:
+    repo: 'https://github.com/rbenv/rbenv.git'
+    dest: "/home/{{ my_user }}/.rbenv"
+  become: true
+  become_user: "{{ my_user }}"
+
+- name: install ruby-build
+  git:
+    repo: 'https://github.com/rbenv/ruby-build.git'
+    dest: "/home/{{ my_user }}/.rbenv/plugins/ruby-build"
+  become: true
+  become_user: "{{ my_user }}"
+
+- name: define pyenv and rbenv setting
   blockinfile:
     dest: "/home/{{ my_user }}/.bash_profile"
     block: |
-      export PYENV_ROOT="$HOME/.pyenv"
-      export PATH="$PYENV_ROOT/bin:$PATH"
-      eval "$(pyenv init -)"
+      ## pyenv (python)
+      if [ -e "$HOME/.pyenv" ]; then
+          export PYENV_ROOT="$HOME/.pyenv"
+          export PATH="$PYENV_ROOT/bin:$PATH"
+          eval "$(pyenv init -)"
+      fi
+
+      ## rbenv (ruby)
+      if [ -e "$HOME/.rbenv" -o -e "/usr/local/bin/rbenv" ]; then
+          export RBENV_ROOT="$HOME/.rbenv"
+          export PATH="$RBENV_ROOT/bin:$PATH"
+          eval "$(rbenv init -)"
+      fi
