@@ -1,2 +1,19 @@
 ---
 # tasks file for myenv
+- name: install packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ packages }}"
+
+- name: upgrade all package (Fedora)
+  dnf:
+    name: "*"
+    state: latest
+  when: ansible_distribution == "Fedora"
+
+- name: upgrade all package (RHEL and CentOS)
+  yum:
+    name: "*"
+    state: latest
+  when: ansible_distribution != "Fedora"
