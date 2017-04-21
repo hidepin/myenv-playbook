@@ -9,3 +9,4 @@ packages:
   - emacs
   - subversion
   - git
+  - zsh
