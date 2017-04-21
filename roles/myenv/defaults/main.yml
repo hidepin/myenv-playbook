@@ -19,3 +19,6 @@ packages:
   - sqlite
   - sqlite-devel
   - openssl-devel
+
+fedora_packages:
+  - cmigemo

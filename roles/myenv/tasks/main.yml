@@ -6,6 +6,13 @@
     state: latest
   with_items: "{{ packages }}"
 
+- name: install fedora packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ fedora_packages }}"
+  when: ansible_distribution == "Fedora"
+
 - name: upgrade all package (Fedora)
   dnf:
     name: "*"
