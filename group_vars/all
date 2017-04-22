@@ -2,3 +2,7 @@
 #  http_proxy: http://172.16.111.1:8080
 #  https_proxy: http://172.16.111.1:8080
 my_user: hidepin
+git_config_param:
+  - { name: 'user.name', value: 'Hidetoshi Imai' }
+  - { name: 'user.email', value: 'hidepin@gmail.com' }
+  - { name: 'color.ui', value: 'auto' }

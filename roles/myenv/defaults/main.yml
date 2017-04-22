@@ -30,3 +30,8 @@ go_packages:
   - { url: 'github.com/golang/lint/golint', bin: 'golint' }
   - { url: 'github.com/motemen/gore', bin: 'gore' }
   - { url: 'github.com/mitchellh/gox', bin: 'gox' }
+
+git_config_param:
+  - { name: 'user.name', value: 'Hidetoshi Imai' }
+  - { name: 'user.email', value: 'hidepin@gmail.com' }
+  - { name: 'color.ui', value: 'auto' }
