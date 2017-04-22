@@ -46,6 +46,24 @@
   become: true
   become_user: "{{ my_user }}"
 
+- name: define tmux setting
+  blockinfile:
+    dest: "/home/{{ my_user }}/.tmux.conf"
+    create: yes
+    block: |
+      # tmux setting
+      set-option -g prefix C-z
+      unbind-key C-b
+      bind-key C-z send-prefix
+
+      set-window-option -g mode-keys vi
+
+      set-option -g history-limit 5000
+
+      unbind-key C-z
+      bind-key C-z last-window
+      bind-key z send-prefix
+
 - name: define pyenv and rbenv setting
   blockinfile:
     dest: "/home/{{ my_user }}/.bash_profile"
