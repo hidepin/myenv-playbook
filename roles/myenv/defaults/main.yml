@@ -22,3 +22,11 @@ packages:
 
 fedora_packages:
   - cmigemo
+
+go_packages:
+  - { url: 'golang.org/x/tools/cmd/goimports', bin: 'goimports' }
+  - { url: 'github.com/nsf/gocode', bin: 'gocode' }
+  - { url: 'github.com/rogpeppe/godef', bin: 'godef' }
+  - { url: 'github.com/golang/lint/golint', bin: 'golint' }
+  - { url: 'github.com/motemen/gore', bin: 'gore' }
+  - { url: 'github.com/mitchellh/gox', bin: 'gox' }

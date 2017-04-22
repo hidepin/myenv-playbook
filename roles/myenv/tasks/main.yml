@@ -69,3 +69,18 @@
           export GOPATH="$HOME/.go"
           export PATH="$GOPATH/bin:$PATH"
       fi
+
+- name: create go dir
+  file:
+    path: "$HOME/.go"
+    state: directory
+  become: true
+  become_user: "{{ my_user }}"
+
+- name: install go package
+  shell: bash -lc "go get -u {{ item.url }}"
+  args:
+    creates: "$GOPATH/bin/{{ item.bin }}"
+  with_items: "{{ go_packages }}"
+  become: true
+  become_user: "{{ my_user }}"
