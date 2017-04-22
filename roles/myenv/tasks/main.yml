@@ -85,6 +85,15 @@
   become: true
   become_user: "{{ my_user }}"
 
+- name: install fedora go package
+  shell: bash -lc "go get -u {{ item.url }}"
+  args:
+    creates: "/home/{{ my_user }}/.go/bin/{{ item.bin }}"
+  with_items: "{{ fedora_go_packages }}"
+  become: true
+  become_user: "{{ my_user }}"
+  when: ansible_distribution == "Fedora"
+
 - name: user.name for gitconfig
   git_config:
     name: "{{ item.name }}"
