@@ -5,6 +5,13 @@ proxy_env:
 #  http_proxy: http://172.16.111.1:8080
 #  https_proxy: http://172.16.111.1:8080
 my_user: hidepin
+
+centos_packages:
+  - epel-release
+
+fedora_packages:
+  - cmigemo
+
 packages:
   - tmux
   - emacs
@@ -12,6 +19,7 @@ packages:
   - git
   - zsh
   - golang
+  - jq
   - zlib-devel
   - bzip2
   - bzip2-devel
@@ -19,12 +27,6 @@ packages:
   - sqlite
   - sqlite-devel
   - openssl-devel
-
-centos_packages:
-  - epel-release
-
-fedora_packages:
-  - cmigemo
 
 go_packages:
   - { url: 'golang.org/x/tools/cmd/goimports', bin: 'goimports' }
