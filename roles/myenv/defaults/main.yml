@@ -36,6 +36,7 @@ go_packages:
   - { url: 'github.com/golang/lint/golint', bin: 'golint' }
   - { url: 'github.com/motemen/gore', bin: 'gore' }
   - { url: 'github.com/mitchellh/gox', bin: 'gox' }
+  - { url: 'github.com/hidepin/poi/cmd/poi', bin: 'poi' }
 
 fedora_go_packages:
   - { url: 'github.com/peco/peco/cmd/peco', bin: 'peco' }
