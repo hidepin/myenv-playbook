@@ -20,6 +20,9 @@ packages:
   - sqlite-devel
   - openssl-devel
 
+centos_packages:
+  - epel-release
+
 fedora_packages:
   - cmigemo
 

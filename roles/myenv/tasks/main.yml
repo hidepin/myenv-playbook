@@ -13,6 +13,13 @@
   with_items: "{{ fedora_packages }}"
   when: ansible_distribution == "Fedora"
 
+- name: install centos packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ centos_packages }}"
+  when: ansible_distribution == "CentOS"
+
 - name: upgrade all package (Fedora)
   dnf:
     name: "*"
