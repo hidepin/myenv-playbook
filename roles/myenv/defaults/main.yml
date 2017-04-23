@@ -10,6 +10,7 @@ centos_packages:
   - epel-release
 
 fedora_packages:
+  - mozc
   - cmigemo
 
 packages:
