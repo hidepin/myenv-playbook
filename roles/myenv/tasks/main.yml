@@ -70,7 +70,9 @@
       unbind-key C-z
       bind-key C-z last-window
       bind-key z send-prefix
-
+  become: true
+  become_user: "{{ my_user }}"
+  
 - name: define pyenv and rbenv setting
   blockinfile:
     dest: "/home/{{ my_user }}/.bash_profile"
