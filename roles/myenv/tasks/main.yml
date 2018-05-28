@@ -1,5 +1,8 @@
 ---
 # tasks file for myenv
+- name: register subscription and yum proxy setting
+  import_tasks: yum_setup.yml
+
 - name: install fedora packages
   package:
     name: "{{ item }}"
