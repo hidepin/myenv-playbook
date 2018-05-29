@@ -10,6 +10,17 @@
   with_items: "{{ fedora_packages }}"
   when: ansible_distribution == "Fedora"
 
+- name: install redhat packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  register: result
+  until: result is success
+  retries: 3
+  delay: 5
+  with_items: "{{ redhat_packages }}"
+  when: ansible_distribution == "RedHat"
+
 - name: install centos packages
   package:
     name: "{{ item }}"

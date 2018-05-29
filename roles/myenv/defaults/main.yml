@@ -10,6 +10,9 @@ proxy_env:
 rhel_subscription_enabled: True
 my_user: hidepin
 
+redhat_packages:
+  - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
 centos_packages:
   - epel-release
 
