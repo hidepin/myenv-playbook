@@ -1,6 +1,9 @@
 #proxy_env:
 #  http_proxy: http://172.16.111.1:8080
 #  https_proxy: http://172.16.111.1:8080
+#rhel_subscription:
+#  username: 'username'
+#  password: 'password'
 my_user: hidepin
 git_config_param:
   - { name: 'user.name', value: 'Hidetoshi Imai' }
