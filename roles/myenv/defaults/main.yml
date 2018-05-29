@@ -4,7 +4,14 @@ proxy_env:
   no_proxy: '*'
 #  http_proxy: http://172.16.111.1:8080
 #  https_proxy: http://172.16.111.1:8080
+#rhel_subscription:
+#  username: 'username'
+#  password: 'password'
+rhel_subscription_enabled: True
 my_user: hidepin
+
+redhat_packages:
+  - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 centos_packages:
   - epel-release

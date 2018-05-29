@@ -1,16 +1,38 @@
 ---
 # tasks file for myenv
+- name: register subscription and yum proxy setting
+  import_tasks: yum_setup.yml
+
 - name: install fedora packages
   package:
     name: "{{ item }}"
     state: latest
+  register: result
+  until: result is success
+  retries: 3
+  delay: 5
   with_items: "{{ fedora_packages }}"
   when: ansible_distribution == "Fedora"
+
+- name: install redhat packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  register: result
+  until: result is success
+  retries: 3
+  delay: 5
+  with_items: "{{ redhat_packages }}"
+  when: ansible_distribution == "RedHat"
 
 - name: install centos packages
   package:
     name: "{{ item }}"
     state: latest
+  register: result
+  until: result is success
+  retries: 3
+  delay: 5
   with_items: "{{ centos_packages }}"
   when: ansible_distribution == "CentOS"
 
@@ -18,18 +40,31 @@
   package:
     name: "{{ item }}"
     state: latest
+    enablerepo: "{{ (ansible_distribution == 'RedHat') | ternary('rhel-7-server-optional-rpms','') }}"
+  register: result
+  until: result is success
+  retries: 3
+  delay: 5
   with_items: "{{ packages }}"
 
 - name: upgrade all package (Fedora)
   dnf:
     name: "*"
     state: latest
+  register: result
+  until: result is success
+  retries: 3
+  delay: 5
   when: ansible_distribution == "Fedora"
 
 - name: upgrade all package (RHEL and CentOS)
   yum:
     name: "*"
     state: latest
+  register: result
+  until: result is success
+  retries: 3
+  delay: 5
   when: ansible_distribution != "Fedora"
 
 - name: install pyenv
