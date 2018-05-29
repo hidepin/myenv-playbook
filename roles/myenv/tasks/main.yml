@@ -32,6 +32,11 @@
   package:
     name: "{{ item }}"
     state: latest
+    enablerepo: "{{ (ansible_distribution == 'RedHat') | ternary('rhel-7-server-optional-rpms','') }}"
+  register: result
+  until: result is success
+  retries: 3
+  delay: 5
   with_items: "{{ packages }}"
 
 - name: upgrade all package (Fedora)
